@@ -117,3 +117,6 @@ The IEC port is mapped to the Next's Expansion Bus using the following connectio
 | DATA                  | A0                                           |
 
 Because the Next Expansion Bus direction can only be set for all Address lines at once (using BUSACK) and all Data lines at once (using Bus_Y) the open collectors of CLK and DATA need to be split across the two. ATN is a simple output so mapped to clk as this is an output on the bus.
+
+
+![alt text](https://github.com/dave18/ZX-Spectrum-Next-C64-Core/blob/Master/Images/image.jpg?raw=true)
