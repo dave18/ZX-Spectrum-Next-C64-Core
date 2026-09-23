@@ -99,13 +99,12 @@ Two loadable ROM sets are provided: **DolphinDOS v2.0** and **SpeedDOS v2.7**. B
 In OSD->Load *.TAP and choose a TAP file. When a TAP is mounted use the Tape submeni in the OSD all the commands for managing the C1530. If using PS2 the keyboard shortcuts will also be enabled.
 
 ### Turbo modes
-
 **C128 mode:** this is C128 compatible turbo mode available in C64 mode on Commodore 128 and can be controlled from software, so games written with this turbo mode support will take advantage of this.
 
 **Smart mode:** In this mode any access to disk will disable turbo mode for short time enough to finish disk operations, thus you will have turbo mode without losing disk operations.
 
 ### Internal Disk Drives
-The FPGA in the Spectrum Next cannot fit in both the fully fledged SID and Disk implementations. I have chosen to prioritise the SID.
+The FPGA in the Spectrum Next cannot fit in both the fully fledged SID and Disk implementations that MiSTer uses so it was a choice of either using a simpler SID implementation or lost the disk drives (Fully MiSTer core takes up around 40k LUTs and we only have 15k and needs to squeeze a soft CPU in too). I have chosen to prioritise the SID as programs can be loaded from PRG, Tape and Cart and the sound really needs to be as good as possible. Disks can be loaded externally through the expansion bus and I want to try and use the PI Zero accelerator to manage disks in future.
 
 ### External Disk Drives (and other IEC devices)
 The IEC port is mapped to the Next's Expansion Bus using the following connections.
@@ -116,7 +115,15 @@ The IEC port is mapped to the Next's Expansion Bus using the following connectio
 | CLK                   | D1                                           |
 | DATA                  | A0                                           |
 
-Because the Next Expansion Bus direction can only be set for all Address lines at once (using BUSACK) and all Data lines at once (using Bus_Y) the open collectors of CLK and DATA need to be split across the two. ATN is a simple output so mapped to clk as this is an output on the bus.
+Because the Next Expansion Bus direction can only be set for all Address lines at once (using BUSACK) and all Data lines at once (using Bus_Y) the open collectors of CLK and DATA need to be split across the two. ATN is a simple output so mapped to clk as this is an output on the bus. You will need to ensure the Kernel ROM matches the one on the external device.
 
+I've tested this with a PI1541 and it works perfectly, see picture below for wiring. 
 
 ![alt text](https://github.com/dave18/ZX-Spectrum-Next-C64-Core/blob/main/Images/PXL_20260923_211712881.jpg?raw=true)
+
+### TODO
+Try to implement HDMI output
+Try to add PI1541 to Next Accelerator and interface seamlessly with core
+Add RTC support
+Add Boot Cartridge Support
+Improve Firmware, especially file browsing
