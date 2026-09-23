@@ -10,7 +10,7 @@ This port is based on the repository here https://github.com/MiSTer-devel/C64_Mi
 - Direct file injection (*.PRG)
 - Dual SID
 - Similar to 6581 and 8580 SID filters
-- Loadable Kernal/C1541 ROMs
+- Loadable Kernal/C1541 ROMs (C1541 element is ignored for now)
 - C128/Smart Turbo mode up to 4x
 - Complete C1530 Datasette implementation with shortcuts keys
 
