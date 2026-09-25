@@ -19,6 +19,9 @@ Copy the core2.bit and core.cfg file to machines/C64/.
 
 ## Usage
 
+### Video
+Video output is currently either VGA or RGB from the Next's VGA port. This can be set from the OSD menu and the default is VGA. As VGA will roll horribly on RGB, there is an optional C64.CFG file included in the release. Copy this to the root of the SD card to start up in RGB mode.
+
 ### Next Keyboard
 Note: Number and Letter mapped as expected.
 
